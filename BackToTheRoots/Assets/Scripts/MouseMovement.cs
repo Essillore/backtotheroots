@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -46,6 +47,19 @@ public class MouseMovement : MonoBehaviour
         {
             PlaceRoot();
         }
+
+        if (Input.GetButton("PlaceRoot")) 
+        {
+            DragRoot();
+        }
+        if (Input.GetButtonUp("PlaceRoot"))
+        {
+            foreach (Vector3Int tile in tilesPassed)
+            {
+                Debug.Log(tile);
+            }
+            tilesPassed.Clear();
+        }
     }
 
     public void MousePosition()
@@ -72,6 +86,20 @@ public class MouseMovement : MonoBehaviour
         
     }
 
+    public void DragRoot() 
+    {
+        
+            Vector3Int tileLocation = treeRoots.WorldToCell(worldMousePosition);
+            // if current location is not in the list, add it
+            if (!tilesPassed.Contains(tileLocation)) 
+            {
+
+                tilesPassed.Add(tileLocation);
+            }
+            
+
+   
+    }
     public void PlaceRoot()
     {
 
@@ -85,10 +113,11 @@ public class MouseMovement : MonoBehaviour
         Debug.Log($"Clicked tile at grid coordinates: ({tileCoordinates.x}, {tileCoordinates.y})");
 
         // Create a tile at the clicked grid coordinates
-        treeRoots.SetTile(tileCoordinates, rootTilePrefab);
+        //treeRoots.SetTile(tileCoordinates, rootTilePrefab);
 
         if (Input.GetButton("PlaceRoot"))
-        {
+        {   
+            Debug.Log("button pressed");
             Vector3Int tileLocation = treeRoots.WorldToCell(worldMousePosition);
             
             // where Type is the datatype of the objects to be stored in the list
@@ -100,6 +129,14 @@ public class MouseMovement : MonoBehaviour
 
             if (Input.GetButtonUp("PlaceRoot"))
             {
+                foreach (Vector3Int location in tilesPassed)
+                {
+                    treeRoots.SetTile(location, rootTilePrefab);
+
+                }
+                {
+                    
+                }
 
                 /*rootPlacementLenght = tileCoordinates - treeRoots.WorldToCell(worldMousePosition);
                 i = rootPlacementLenght.magnitude;
@@ -114,34 +151,6 @@ public class MouseMovement : MonoBehaviour
         }
     }
     
-
-    public void FixedUpdate()
-    {
-        
-
-    }
-        
-          public Vector3 MouseToSelectedMapPosition()
-        {
-            Vector3 mousePosition = Input.mousePosition;
-            mousePosition.z = sceneCamera.nearClipPlane;
-            Ray myRay = sceneCamera.ScreenPointToRay(mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(myRay, out hit, 111, placementLayermask))
-            {
-                //  transform.position = hit.point;
-
-                // transform.position = Vector3.Lerp(transform.position, hit.point, 0.1f);
-
-                mouseObject.position = hit.point;
-              //  lastPosition = hit.point;
-
-
-            }
-            return lastPosition;
-        
-    }
 
 
 }
