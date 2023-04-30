@@ -8,18 +8,23 @@ public class AdjacentObjectFinder : MonoBehaviour
 
     private void Start()
     {
-     
-        int x = Mathf.RoundToInt(gameObject.transform.position.x);
+        saveGridCoordinates();
+    
+        FindAdjacentObjects();
+    }
+
+public void saveGridCoordinates() 
+{
+
+    int x = Mathf.RoundToInt(gameObject.transform.position.x);
         int y = Mathf.RoundToInt(gameObject.transform.position.y);
         tempVector2 = new Vector2Int(x, y);
         Debug.Log($"tempVector2 is {tempVector2}");
         gridPosition = tempVector2;
         
         gridManager.RegisterObject(gridPosition, gameObject);
-        FindAdjacentObjects();
-    }
-
-    private void FindAdjacentObjects()
+}
+    public void FindAdjacentObjects()
     {
         Vector2Int[] directions = new Vector2Int[]
         {
@@ -35,10 +40,12 @@ public class AdjacentObjectFinder : MonoBehaviour
 
             if (adjacentObject != null)
             {
+                
                 Debug.Log($"Found adjacent GameObject '{adjacentObject.name}' at {gridPosition + direction}");
             }
             else
-            {
+            {  
+                
                 Debug.Log($"No adjacent GameObject found at {gridPosition + direction}");
             }
         }

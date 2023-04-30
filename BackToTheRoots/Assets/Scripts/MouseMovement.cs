@@ -1,3 +1,5 @@
+using System;
+using System.Runtime.InteropServices;
 
 using System.Collections;
 using System.Collections.Generic;
@@ -6,6 +8,7 @@ using UnityEngine.Tilemaps;
 
 public class MouseMovement : MonoBehaviour
 {
+    RootGrower rootGrower;
     [SerializeField] private Transform mouseObject;
 
     [SerializeField]
@@ -30,17 +33,21 @@ public class MouseMovement : MonoBehaviour
     public Vector3Int rootPlacementLenght;
 
     public List<Vector3Int> tilesPassed;
-
+    public AdjacentObjectFinder aof;
     public float i;
     // Start is called before the first frame update
     void Start()
     {
+        aof = gameObject.GetComponent<AdjacentObjectFinder>();
+        aof.saveGridCoordinates();
         tilesPassed = new List<Vector3Int>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        aof.saveGridCoordinates();
+        aof.FindAdjacentObjects();
         MousePosition();
 
         if (Input.GetButtonDown("PlaceRoot"))
@@ -57,11 +64,18 @@ public class MouseMovement : MonoBehaviour
             foreach (Vector3Int tile in tilesPassed)
             {
                 Debug.Log(tile);
+                AddRoot(tile);
             }
             tilesPassed.Clear();
         }
     }
-
+    public void AddRoot(Vector3Int tile)
+    {
+      
+            treeRoots.SetTile(tile, rootTilePrefab);
+            Debug.Log("Root added");
+    
+    }
     public void MousePosition()
     {
 
