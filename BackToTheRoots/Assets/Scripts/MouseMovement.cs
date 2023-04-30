@@ -34,21 +34,35 @@ public class MouseMovement : MonoBehaviour
 
     public List<Vector3Int> tilesPassed;
     public AdjacentObjectFinder aof;
+    public GridManager gridManager;
     public float i;
+    private Vector2Int gridPosition;
+    private Vector2Int oldPosition;
+    
     // Start is called before the first frame update
     void Start()
     {
-        aof = gameObject.GetComponent<AdjacentObjectFinder>();
-        aof.saveGridCoordinates();
+        setGridPosition();
+
+                gridManager.RegisterObject(gridPosition, gameObject);
+
         tilesPassed = new List<Vector3Int>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        aof.saveGridCoordinates();
-        aof.FindAdjacentObjects();
+        oldPosition = gridPosition;
+        
         MousePosition();
+        setGridPosition();
+        if (oldPosition != gridPosition)
+        {
+            // mouse has moved!
+            Debug.Log("Mouse has moved!");
+            GetAdjacentObjects();
+            oldPosition = gridPosition;
+        }
 
         if (Input.GetButtonDown("PlaceRoot"))
         {
@@ -69,6 +83,35 @@ public class MouseMovement : MonoBehaviour
             tilesPassed.Clear();
         }
     }
+
+    private void setGridPosition()
+    {
+        int x = Mathf.RoundToInt(gameObject.transform.position.x);
+        int y = Mathf.RoundToInt(gameObject.transform.position.y);
+        gridPosition = new Vector2Int(x, y);
+
+    }
+
+
+    private void GetAdjacentObjects() 
+    {
+        Debug.Log("GetAdjacentObjects called");
+
+        if (gridManager.CheckIfAdjacentHasRoot(gridPosition, Vector2Int.up)) {
+            Debug.Log("Adjacent up has root");   
+        }
+        if (gridManager.CheckIfAdjacentHasRoot(gridPosition, Vector2Int.right)) {
+            Debug.Log("Adjacent right has root");   
+        }
+        if (gridManager.CheckIfAdjacentHasRoot(gridPosition, Vector2Int.down)) {
+            Debug.Log("Adjacent down has root");   
+        }
+        if (gridManager.CheckIfAdjacentHasRoot(gridPosition, Vector2Int.left)) {
+            Debug.Log("Adjacent left has root");   
+        }
+        return;
+    }
+
     public void AddRoot(Vector3Int tile)
     {
       
@@ -97,7 +140,7 @@ public class MouseMovement : MonoBehaviour
         // Update the object's position to match the snapped world mouse position (only X and Y axes for a 2D game)
         transform.position = new Vector3(snappedX, snappedY, transform.position.z);
 
-        
+        //GetAdjacentObjects();
     }
 
     public void DragRoot() 

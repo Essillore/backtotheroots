@@ -19,7 +19,7 @@ public void saveGridCoordinates()
     int x = Mathf.RoundToInt(gameObject.transform.position.x);
         int y = Mathf.RoundToInt(gameObject.transform.position.y);
         tempVector2 = new Vector2Int(x, y);
-        Debug.Log($"tempVector2 is {tempVector2}");
+        
         gridPosition = tempVector2;
         
         gridManager.RegisterObject(gridPosition, gameObject);
@@ -41,12 +41,12 @@ public void saveGridCoordinates()
             if (adjacentObject != null)
             {
                 
-                Debug.Log($"Found adjacent GameObject '{adjacentObject.name}' at {gridPosition + direction}");
+              //  Debug.Log($"Found adjacent GameObject '{adjacentObject.name}' at {gridPosition + direction}");
             }
             else
             {  
                 
-                Debug.Log($"No adjacent GameObject found at {gridPosition + direction}");
+                //Debug.Log($"No adjacent GameObject found at {gridPosition + direction}");
             }
         }
     }

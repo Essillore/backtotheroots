@@ -13,7 +13,7 @@ public class GridManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"An object is already registered at position {position}");
+            //Debug.LogWarning($"An object is already registered at position {position}");
         }
     }
 
@@ -28,6 +28,27 @@ public class GridManager : MonoBehaviour
         else
         {
             return null;
+        }
+    }
+
+    public bool CheckIfAdjacentHasRoot(Vector2Int currentPosition, Vector2Int direction)
+    {
+        Vector2Int adjacentPosition = currentPosition + direction;
+
+        if (gridObjects.TryGetValue(adjacentPosition, out GameObject adjacentObject))
+        {
+            if (adjacentObject.GetComponent<RootPiece>() != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
         }
     }
 }
