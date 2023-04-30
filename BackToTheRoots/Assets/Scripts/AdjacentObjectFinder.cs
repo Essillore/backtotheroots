@@ -4,9 +4,17 @@ public class AdjacentObjectFinder : MonoBehaviour
 {
     public GridManager gridManager;
     public Vector2Int gridPosition;
+    private Vector2Int tempVector2;
 
     private void Start()
     {
+     
+        int x = Mathf.RoundToInt(gameObject.transform.position.x);
+        int y = Mathf.RoundToInt(gameObject.transform.position.y);
+        tempVector2 = new Vector2Int(x, y);
+        Debug.Log($"tempVector2 is {tempVector2}");
+        gridPosition = tempVector2;
+        
         gridManager.RegisterObject(gridPosition, gameObject);
         FindAdjacentObjects();
     }
