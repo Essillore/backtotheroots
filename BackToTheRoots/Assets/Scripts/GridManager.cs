@@ -31,6 +31,19 @@ public class GridManager : MonoBehaviour
         }
     }
 
+    public GameObject GetEarthObject(Vector2Int currentPosition)
+    {
+        if (gridObjects.TryGetValue(currentPosition, out GameObject earthObject))
+        {
+            return earthObject;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+
     public bool CheckIfAdjacentHasRoot(Vector2Int currentPosition, Vector2Int direction)
     {
         Vector2Int adjacentPosition = currentPosition + direction;

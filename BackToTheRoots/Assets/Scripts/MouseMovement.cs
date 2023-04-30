@@ -1,5 +1,3 @@
-using System;
-using System.Runtime.InteropServices;
 
 using System.Collections;
 using System.Collections.Generic;
@@ -8,7 +6,8 @@ using UnityEngine.Tilemaps;
 
 public class MouseMovement : MonoBehaviour
 {
-    RootGrower rootGrower;
+    public GameObject rootSquare;
+    // RootGrower rootGrower;
     [SerializeField] private Transform mouseObject;
 
     [SerializeField]
@@ -25,6 +24,7 @@ public class MouseMovement : MonoBehaviour
     public float gridSize = 1f;
 
     public Vector3 worldMousePosition;
+    public Vector3Int tempVectore;
 
     private Vector3 lastPosition;
 
@@ -192,8 +192,31 @@ public class MouseMovement : MonoBehaviour
 
                 }
                 {
+
+
+
+
+
+
+
+           /*         // whichEarthSquare = new Vector2Int(0, 0);
+                    tempVectore = worldMousePosition.RoundToInt(worldMousePosition);
+
+                    Vector2Int hiua = worldMousePosition.Vector2Int;
+        //                    whichEarthSquare = worldMousePosition;
+                    Vector3Int.Vector2Int
+                    //  foreach (var item in gridM.gridObjects)
+
                     
-                }
+
+            GameObject rootParentEarthtile = gridManager.GetEarthObject(whichEarthSquare);
+            Instantiate(rootSquare, new Vector3(item.Key.position.x, position.y, 0), Quaternion.identity, parent.transform);
+*/
+        }
+        
+
+                
+                
 
                 /*rootPlacementLenght = tileCoordinates - treeRoots.WorldToCell(worldMousePosition);
                 i = rootPlacementLenght.magnitude;
