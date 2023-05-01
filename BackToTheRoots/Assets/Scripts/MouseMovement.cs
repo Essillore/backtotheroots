@@ -88,16 +88,16 @@ public class MouseMovement : MonoBehaviour
     {
 
         if (gridManager.CheckIfAdjacentHasRoot(gridPosition, Vector2Int.up)) {
-            Debug.Log("Adjacent up has root");   
+         //   Debug.Log("Adjacent up has root");   
         }
         if (gridManager.CheckIfAdjacentHasRoot(gridPosition, Vector2Int.right)) {
-            Debug.Log("Adjacent right has root");   
+           // Debug.Log("Adjacent right has root");   
         }
         if (gridManager.CheckIfAdjacentHasRoot(gridPosition, Vector2Int.down)) {
-            Debug.Log("Adjacent down has root");   
+            //Debug.Log("Adjacent down has root");   
         }
         if (gridManager.CheckIfAdjacentHasRoot(gridPosition, Vector2Int.left)) {
-            Debug.Log("Adjacent left has root");   
+            //Debug.Log("Adjacent left has root");   
         }
         return;
     }
@@ -149,7 +149,7 @@ public class MouseMovement : MonoBehaviour
 
 
         // Handle the grid tile click (you can replace this with your own logic)
-        Debug.Log($"Clicked tile at grid coordinates: ({tileCoordinates.x}, {tileCoordinates.y})");
+        //Debug.Log($"Clicked tile at grid coordinates: ({tileCoordinates.x}, {tileCoordinates.y})");
 
         Vector2Int whichEarthSquare = Vector2Int.RoundToInt(worldMousePosition);
         Vector3 earthSquarePlace = new Vector3(whichEarthSquare.x, whichEarthSquare.y, 0f);
@@ -159,28 +159,28 @@ public class MouseMovement : MonoBehaviour
         if (Input.GetButton("PlaceRoot"))
         {
             bool hasRoot = false;
-            Debug.Log("button pressed");
+         //   Debug.Log("button pressed");
 
 
             if (gridManager.CheckIfAdjacentHasRoot(gridPosition, Vector2Int.up))
             {
-                Debug.Log("Adjacent up has root");
+        //        Debug.Log("Adjacent up has root");
                 hasRoot = true;
 
             }
             if (gridManager.CheckIfAdjacentHasRoot(gridPosition, Vector2Int.right))
             {
-                Debug.Log("Adjacent right has root");   
+          //      Debug.Log("Adjacent right has root");   
                 hasRoot = true;
             }
             if (gridManager.CheckIfAdjacentHasRoot(gridPosition, Vector2Int.down))
             {
-                Debug.Log("Adjacent down has root");   
+            //    Debug.Log("Adjacent down has root");   
                 hasRoot = true;
             }
             if (gridManager.CheckIfAdjacentHasRoot(gridPosition, Vector2Int.left))
             {
-                Debug.Log("Adjacent left has root");   
+           //     Debug.Log("Adjacent left has root");   
                 hasRoot = true;
             }
 
@@ -203,7 +203,7 @@ public class MouseMovement : MonoBehaviour
     {
         Vector2Int whichEarthSquare = Vector2Int.RoundToInt(worldMousePosition);
         Vector3 earthSquarePlace = new Vector3(whichEarthSquare.x, whichEarthSquare.y, 0f);
-        Debug.Log("AddRoot called");
+        //Debug.Log("AddRoot called");
         GameObject rootParentEarthtile = gridManager.GetEarthObject(gridPosition);
         Instantiate(rootSquare, earthSquarePlace, Quaternion.identity, rootParentEarthtile.transform);
 
