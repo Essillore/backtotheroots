@@ -11,11 +11,11 @@ public class RootPiece : MonoBehaviour
     public GameObject motherTree;
     public MotherTree motherTreeScript;
 
-    private float waterInRootpiece = 0f;
-    private float phosphorusInRootpiece = 0f;
-    private float nitrogenInRootpiece = 0f;
-    private float calciumInRootpiece = 0f;
-    private float potassiumInRootpiece = 0f;
+    public float waterInRootpiece = 0f;
+    public float phosphorusInRootpiece = 0f;
+    public float nitrogenInRootpiece = 0f;
+    public float calciumInRootpiece = 0f;
+    public float potassiumInRootpiece = 0f;
 
     public Vector2 vectorToMotherTree;
     public Vector2Int vToMotherTree;

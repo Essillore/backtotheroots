@@ -16,13 +16,13 @@ public class Mycelium : MonoBehaviour
     public float potassiumInMycelium;
     public float calciumInMycelium;
 
-
-
+    private bool connectedToRoots = false;
+    private bool exchangeRunning = false;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        gridPosition = gridManager.GetGridPosition(gameObject);
         int x = Mathf.RoundToInt(gameObject.transform.position.x);
         int y = Mathf.RoundToInt(gameObject.transform.position.y);
         gridPosition = new Vector2Int(x, y);
@@ -38,7 +38,23 @@ public class Mycelium : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print ("Mycelium is starting");
+         if (gridManager.CheckIfTileHasRootPiece(gridPosition))
+        {
+            RootPiece rootPiece = gridManager.GetRootPiece(gridPosition);
+            Debug.Log("Mycelium is on the same tile as a rootpiece");
+            //ExchangeNutrients(rootPiece);
+            connectedToRoots = true;
+        }
+
+        // We want to start this exactly once when the mycelium is connected to roots,
+        // not on every frame
+        if (connectedToRoots && !exchangeRunning)
+        {
+            Debug.Log("Starting exchange");
+            StartCoroutine(ExchangeTimer(1f));
+            exchangeRunning = true;
+        }
+        
     }
 
     private IEnumerator Grow()
@@ -107,4 +123,34 @@ public class Mycelium : MonoBehaviour
             AbsorbNutrientsFromEarth();
         }
     }   
+    
+    private void ExchangeNutrients(RootPiece rootPiece) 
+    {
+        float exchangeRatio = 0.05f;
+        rootPiece.GetComponent<RootPiece>().waterInRootpiece += waterInMycelium * exchangeRatio;
+        waterInMycelium -= waterInMycelium * exchangeRatio;
+        
+        rootPiece.GetComponent<RootPiece>().nitrogenInRootpiece += nitrogenInMycelium * exchangeRatio;
+        nitrogenInMycelium -= nitrogenInMycelium * exchangeRatio;
+
+        rootPiece.GetComponent<RootPiece>().phosphorusInRootpiece += phosphorusInMycelium * exchangeRatio;
+        phosphorusInMycelium -= phosphorusInMycelium * exchangeRatio;
+
+        rootPiece.GetComponent<RootPiece>().potassiumInRootpiece += potassiumInMycelium * exchangeRatio;
+        potassiumInMycelium -= potassiumInMycelium * exchangeRatio;
+
+        rootPiece.GetComponent<RootPiece>().calciumInRootpiece += calciumInMycelium * exchangeRatio;
+        calciumInMycelium -= calciumInMycelium * exchangeRatio;
+        
+        // todo: add exchange of sugars
+    }
+
+    IEnumerator ExchangeTimer(float howOften)
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(howOften);
+            ExchangeNutrients();
+        }
+    }
 }

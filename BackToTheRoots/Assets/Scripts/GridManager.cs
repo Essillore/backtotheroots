@@ -107,6 +107,46 @@ public class GridManager : MonoBehaviour
         }
         return adjacentObjects;
     }
+    
 
+    // a method that returns rootpiec from a tile
+    public RootPiece GetRootPiece(Vector2Int position)
+    {
+        if (gridObjects.TryGetValue(position, out GameObject earthObject))
+        {
+            if (earthObject.GetComponentInChildren<RootPiece>() != null)
+            {
+                return earthObject.GetComponentInChildren<RootPiece>();
+            }
+            else
+            {
+                return null;
+            }
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public bool CheckIfTileHasRootPiece(Vector2Int position)
+    {
+        if (gridObjects.TryGetValue(position, out GameObject earthObject))
+        {
+            if (earthObject.GetComponentInChildren<RootPiece>() != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+
+    }
 
 }
