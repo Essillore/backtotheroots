@@ -10,26 +10,16 @@ public class UIMotherTree : MonoBehaviour
 {
     public MotherTree motherTree;
 
-    public Slider water;
     public Gradient gradient;
-    public Image fill; 
+    public Image fill;
 
-    public Slider sugar;
-    public Slider phosphorus;
-    public Slider nitrogen;
-    public Slider calcium;
-    public Slider potassium;
+    public Slider slider;
 
-
-    public void SetMaxWater(int maxWater)
+    public void SetSlider(int sliderUpdate)
     {
-        water.maxValue = maxWater; 
+        slider.value = sliderUpdate;
+        fill.color = gradient.Evaluate(slider.normalizedValue);
     }
-
-    public void SetWater(int waterUpdate)
-    {
-        water.value = waterUpdate;
-        fill.color = gradient.Evaluate(1f);
-    }
+   
 
 }
