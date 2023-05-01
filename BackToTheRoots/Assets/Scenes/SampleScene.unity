@@ -1956,7 +1956,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1050692600}
   - component: {fileID: 1050692601}
-  - component: {fileID: 1050692602}
   m_Layer: 5
   m_Name: MTWater
   m_TagString: Untagged
@@ -2033,28 +2032,10 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 50
   m_WholeNumbers: 0
-  m_Value: 5.5
+  m_Value: 12.7
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1050692602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1050692599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14dcc546fb8bfda458508a69d5406a45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  water: {fileID: 1050692601}
-  sugar: {fileID: 0}
-  phosphorus: {fileID: 0}
-  nitrogen: {fileID: 0}
-  calcium: {fileID: 0}
-  potassium: {fileID: 0}
 --- !u!1 &1120573561
 GameObject:
   m_ObjectHideFlags: 0
@@ -6392,7 +6373,7 @@ MonoBehaviour:
   nitrogenInTree: 15
   calciumInTree: 5
   potassiumInTree: 3
-  SliderforWater: {fileID: 1050692602}
+  SliderforWater: {fileID: 0}
 --- !u!1 &1875374094
 GameObject:
   m_ObjectHideFlags: 0
