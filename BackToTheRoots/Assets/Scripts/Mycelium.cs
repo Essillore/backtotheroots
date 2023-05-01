@@ -16,6 +16,8 @@ public class Mycelium : MonoBehaviour
     public float potassiumInMycelium;
     public float calciumInMycelium;
 
+    private bool connectedToRoots = false;
+    private bool exchangeRunning = false;
 
     // Start is called before the first frame update
     void Start()
@@ -40,8 +42,19 @@ public class Mycelium : MonoBehaviour
         {
             RootPiece rootPiece = gridManager.GetRootPiece(gridPosition);
             Debug.Log("Mycelium is on the same tile as a rootpiece");
-            ExchangeNutrients(rootPiece);
+            //ExchangeNutrients(rootPiece);
+            connectedToRoots = true;
         }
+
+        // We want to start this exactly once when the mycelium is connected to roots,
+        // not on every frame
+        if (connectedToRoots && !exchangeRunning)
+        {
+            Debug.Log("Starting exchange");
+            StartCoroutine(ExchangeTimer(1f));
+            exchangeRunning = true;
+        }
+        
     }
 
     private IEnumerator Grow()
@@ -110,9 +123,6 @@ public class Mycelium : MonoBehaviour
             AbsorbNutrientsFromEarth();
         }
     }   
-    // if mycelium and rootpiece are on the same tile, the mycelium should send nutrients to the rootpiece
-    // in exchange for sugars
-
     
     private void ExchangeNutrients(RootPiece rootPiece) 
     {
@@ -133,5 +143,14 @@ public class Mycelium : MonoBehaviour
         calciumInMycelium -= calciumInMycelium * exchangeRatio;
         
         // todo: add exchange of sugars
+    }
+
+    IEnumerator ExchangeTimer(float howOften)
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(howOften);
+            ExchangeNutrients();
+        }
     }
 }
