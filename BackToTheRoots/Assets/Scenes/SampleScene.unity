@@ -933,6 +933,8 @@ MonoBehaviour:
   gridManager: {fileID: 446542827}
   gridPosition: {x: 0, y: 0}
   earthstats: {fileID: 0}
+  motherTree: {fileID: 1843772896}
+  motherTreeScript: {fileID: 0}
 --- !u!212 &247220326
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1214,7 +1216,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: "Water\t\t0\nPhosphorus\t0\nNitrogen\t0\nCalcium\t0\nPotassium\t0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1277,7 +1279,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 66.180115, y: 0, z: 105.38965, w: -51.521057}
+  m_margin: {x: -28.233276, y: -8.715088, z: 60.361694, w: -24.286377}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1308,7 +1310,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -108.5, y: -44}
+  m_AnchoredPosition: {x: -60, y: -60}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &525291238
@@ -1396,7 +1398,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &682871971
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1414,7 +1416,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -6, y: -43}
+  m_AnchoredPosition: {x: -6, y: -44}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &682871972
@@ -1572,6 +1574,8 @@ MonoBehaviour:
   gridManager: {fileID: 446542827}
   gridPosition: {x: 0, y: 0}
   earthstats: {fileID: 0}
+  motherTree: {fileID: 1843772896}
+  motherTreeScript: {fileID: 0}
 --- !u!212 &857973837
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1719,6 +1723,8 @@ MonoBehaviour:
   gridManager: {fileID: 446542827}
   gridPosition: {x: 0, y: 0}
   earthstats: {fileID: 0}
+  motherTree: {fileID: 1843772896}
+  motherTreeScript: {fileID: 0}
 --- !u!212 &1326921653
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5439,12 +5445,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e84be489ec1cb741b8dac3b038b471b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseHolder: {fileID: 2095048172}
+  mouseMovement: {fileID: 0}
+  gridPosition: {x: 0, y: 0}
+  grid: {fileID: 446542824}
+  gridManager: {fileID: 0}
+  earthObject: {fileID: 0}
   waterInTile: 30
   phosphorusInTile: 7
   nitrogenInTile: 15
   calciumInTile: 5
   potassiumInTile: 3
-  earthStats: {fileID: 523878793}
+  tmp_text: {fileID: 523878793}
 --- !u!4 &1703303537
 Transform:
   m_ObjectHideFlags: 0
@@ -5751,6 +5763,8 @@ MonoBehaviour:
   gridManager: {fileID: 446542827}
   gridPosition: {x: 0, y: 0}
   earthstats: {fileID: 0}
+  motherTree: {fileID: 0}
+  motherTreeScript: {fileID: 0}
 --- !u!212 &1944657261
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5853,6 +5867,7 @@ MonoBehaviour:
   aof: {fileID: 2095048177}
   gridManager: {fileID: 446542827}
   i: 0
+  gridPosition: {x: 0, y: 0}
 --- !u!212 &2095048174
 SpriteRenderer:
   m_ObjectHideFlags: 0
