@@ -8,6 +8,16 @@ public class Mycelium : MonoBehaviour
     public AdjacentObjectFinder aof;
     public Vector2Int gridPosition;
     public GameObject myceliumPrefab;
+    public EarthStats earthStats;
+
+    public float waterInMycelium;
+    public float nitrogenInMycelium;
+    public float phosphorusInMycelium;
+    public float potassiumInMycelium;
+    public float calciumInMycelium;
+
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -16,9 +26,13 @@ public class Mycelium : MonoBehaviour
         int x = Mathf.RoundToInt(gameObject.transform.position.x);
         int y = Mathf.RoundToInt(gameObject.transform.position.y);
         gridPosition = new Vector2Int(x, y);
-                
+        earthStats = GetComponentInParent<EarthStats>();
+        //earthstats.MyceliumHasBeenAttached();
+
+        
         //gridManager.RegisterObject(gridPosition, gameObject);
         StartCoroutine(Grow());
+        StartCoroutine(AbsorbTimer(1f));
     }
 
     // Update is called once per frame
@@ -64,4 +78,33 @@ public class Mycelium : MonoBehaviour
         }   
 
     }
+
+    public void AbsorbNutrientsFromEarth() 
+    {
+        float absorpRatio = 0.01f;
+
+        waterInMycelium += earthStats.waterInTile * absorpRatio;
+        earthStats.waterInTile -= earthStats.waterInTile * absorpRatio;
+        
+        nitrogenInMycelium += earthStats.nitrogenInTile * absorpRatio;
+        earthStats.nitrogenInTile -= earthStats.nitrogenInTile * absorpRatio;
+
+        phosphorusInMycelium += earthStats.phosphorusInTile * absorpRatio;  
+        earthStats.phosphorusInTile -= earthStats.phosphorusInTile * absorpRatio;
+
+        potassiumInMycelium += earthStats.potassiumInTile * absorpRatio;
+        earthStats.potassiumInTile -= earthStats.potassiumInTile * absorpRatio;
+
+        calciumInMycelium += earthStats.calciumInTile * absorpRatio;
+        earthStats.calciumInTile -= earthStats.calciumInTile * absorpRatio;
+    }
+
+    public IEnumerator AbsorbTimer(float howOften)
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(howOften);
+            AbsorbNutrientsFromEarth();
+        }
+    }   
 }
