@@ -16,12 +16,30 @@ public class MotherTree : MonoBehaviour
     public float potassiumInTree = 3f;
 
     public GameObject sliderforWater;
-    public UIMotherTree UImothertree;
+    public GameObject sliderforSugar;
+    public GameObject sliderforPhosphorus;
+    public GameObject sliderforNitrogen;
+    public GameObject sliderforCalcium;
+    public GameObject sliderforPotassium;
+
+
+    private UIMotherTree waterUIslider;
+    private UIMotherTree sugarUIslider;
+    private UIMotherTree phosphorusUIslider;
+    private UIMotherTree nitrogenUIslider;
+    private UIMotherTree calciumUIslider;
+    private UIMotherTree potassiumUIslider;
 
     // Start is called before the first frame update
     void Start()
     {
-        UImothertree = sliderforWater.GetComponent<UIMotherTree>();
+        waterUIslider = sliderforWater.GetComponent<UIMotherTree>();
+        sugarUIslider = sliderforSugar.GetComponent<UIMotherTree>();
+        phosphorusUIslider = sliderforPhosphorus.GetComponent<UIMotherTree>();
+        nitrogenUIslider = sliderforNitrogen.GetComponent<UIMotherTree>();
+        calciumUIslider = sliderforCalcium.GetComponent<UIMotherTree>();
+        potassiumUIslider = sliderforPotassium.GetComponent<UIMotherTree>();
+
         StartCoroutine(UpdateUI());
 
 
@@ -37,8 +55,14 @@ public class MotherTree : MonoBehaviour
     {
         for (int i = 0; i < 500; i++)
         {
-            
-            UImothertree.SetWater((int)waterInTree);
+
+            waterUIslider.SetSlider((int)waterInTree);
+            sugarUIslider.SetSlider((int)sugarInTree);
+            phosphorusUIslider.SetSlider((int)phosphorusInTree);
+            nitrogenUIslider.SetSlider((int)nitrogenInTree);
+            calciumUIslider.SetSlider((int)calciumInTree);
+            potassiumUIslider.SetSlider((int)potassiumInTree);
+
             print("set water to " + waterInTree);
             yield return new WaitForSeconds(1f);
 
