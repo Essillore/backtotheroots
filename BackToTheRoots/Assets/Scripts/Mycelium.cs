@@ -31,7 +31,7 @@ public class Mycelium : MonoBehaviour
     {
         while(true)
         {
-            yield return new WaitForSeconds(Random.Range(1f, 5f));
+            yield return new WaitForSeconds(Random.Range(1f, 8f));
             Debug.Log("Mycelium is growing");
             FindTileToGrowTo();
             
@@ -50,7 +50,7 @@ public class Mycelium : MonoBehaviour
             if (gridManager.TileContainsMycelium(gridPosition) == false)
             {
                 Debug.Log($"Found empty tile at {gridPosition}");
-                if (Random.Range(0f, 1f) < 0.5f)
+                if (Random.Range(0f, 1f) < 0.3f)
                 {
                     
                            
