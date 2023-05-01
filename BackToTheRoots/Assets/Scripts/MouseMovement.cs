@@ -59,8 +59,15 @@ public class MouseMovement : MonoBehaviour
         if (oldPosition != gridPosition)
         {
             // mouse has moved!
-            GetAdjacentObjects();
+            //GetAdjacentObjects();
             oldPosition = gridPosition;
+            if (CanPlaceRoot()) {
+                mouseObject.GetComponent<SpriteRenderer>().color = Color.black;
+                
+            } else {
+                mouseObject.GetComponent<SpriteRenderer>().color = Color.red;
+            }
+            //CheckIfAdjacentHasRoot();
         }
 
         if (Input.GetButtonDown("PlaceRoot"))
@@ -84,7 +91,7 @@ public class MouseMovement : MonoBehaviour
     }
 
 
-    private void GetAdjacentObjects() 
+ /*   private void GetAdjacentObjects() 
     {
 
         if (gridManager.CheckIfAdjacentHasRoot(gridPosition, Vector2Int.up)) {
@@ -100,7 +107,7 @@ public class MouseMovement : MonoBehaviour
             //Debug.Log("Adjacent left has root");   
         }
         return;
-    }
+    }*/
 
 
     public void MousePosition()
@@ -158,7 +165,19 @@ public class MouseMovement : MonoBehaviour
 
         if (Input.GetButton("PlaceRoot"))
         {
-            bool hasRoot = false;
+                if (CanPlaceRoot())
+            {
+                AddRoot(gridPosition);
+            }
+
+            
+
+           
+        }
+    }
+    private bool CanPlaceRoot()
+    {
+                bool hasRoot = false;
          //   Debug.Log("button pressed");
 
 
@@ -183,17 +202,13 @@ public class MouseMovement : MonoBehaviour
            //     Debug.Log("Adjacent left has root");   
                 hasRoot = true;
             }
+        return hasRoot;
 
-            if (hasRoot)
-            {
-                AddRoot(gridPosition);
-            }
 
-            
 
-           
-        }
-    }
+    }   
+
+
     public Vector2Int GetGridPosition()
     {
         return gridPosition;
