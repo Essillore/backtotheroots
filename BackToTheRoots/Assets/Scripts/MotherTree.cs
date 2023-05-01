@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using System;
 
 public class MotherTree : MonoBehaviour
 {
@@ -12,13 +15,16 @@ public class MotherTree : MonoBehaviour
     public float calciumInTree = 5f;
     public float potassiumInTree = 3f;
 
-    public UIMotherTree SliderforWater;
-
+    public GameObject sliderforWater;
+    public UIMotherTree UImothertree;
 
     // Start is called before the first frame update
     void Start()
     {
+        UImothertree = sliderforWater.GetComponent<UIMotherTree>();
         StartCoroutine(UpdateUI());
+
+
     }
 
     // Update is called once per frame
@@ -29,10 +35,13 @@ public class MotherTree : MonoBehaviour
 
     public IEnumerator UpdateUI()
     {
-        while(true)
+        for (int i = 0; i < 500; i++)
         {
+            
+            UImothertree.SetWater((int)waterInTree);
+            print("set water to " + waterInTree);
             yield return new WaitForSeconds(1f);
-            SliderforWater.SetWater((int)waterInTree);
+
         }
     }
 
