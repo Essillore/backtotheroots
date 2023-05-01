@@ -36,7 +36,7 @@ public class MouseMovement : MonoBehaviour
     public AdjacentObjectFinder aof;
     public GridManager gridManager;
     public float i;
-    private Vector2Int gridPosition;
+    public Vector2Int gridPosition;
     private Vector2Int oldPosition;
     
     // Start is called before the first frame update
@@ -59,7 +59,6 @@ public class MouseMovement : MonoBehaviour
         if (oldPosition != gridPosition)
         {
             // mouse has moved!
-            Debug.Log("Mouse has moved!");
             GetAdjacentObjects();
             oldPosition = gridPosition;
         }
@@ -77,7 +76,6 @@ public class MouseMovement : MonoBehaviour
         {
             foreach (Vector3Int tile in tilesPassed)
             {
-                Debug.Log(tile);
                 AddRoot(tile);
             }
             tilesPassed.Clear();
@@ -224,6 +222,10 @@ public class MouseMovement : MonoBehaviour
 
             }
         }
+    }
+    public Vector2Int GetGridPosition()
+    {
+        return gridPosition;
     }
     
 
