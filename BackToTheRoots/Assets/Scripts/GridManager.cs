@@ -11,10 +11,7 @@ public class GridManager : MonoBehaviour
         {
             gridObjects[position] = obj;
         }
-        else
-        {
-            //Debug.LogWarning($"An object is already registered at position {position}");
-        }
+   
     }
 
     public GameObject GetAdjacentObject(Vector2Int currentPosition, Vector2Int direction)
@@ -50,7 +47,7 @@ public class GridManager : MonoBehaviour
 
         if (gridObjects.TryGetValue(adjacentPosition, out GameObject adjacentObject))
         {
-            if (adjacentObject.GetComponent<RootPiece>() != null)
+            if (adjacentObject.GetComponentInChildren<RootPiece>() != null)
             {
                 return true;
             }

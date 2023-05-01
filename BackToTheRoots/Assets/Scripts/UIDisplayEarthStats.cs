@@ -26,7 +26,6 @@ public class UIDisplayEarthStats : MonoBehaviour
         gridManager = grid.GetComponent<GridManager>();
         mouseMovement = mouseHolder.GetComponent<MouseMovement>();
         gridPosition = mouseMovement.GetGridPosition();
-        //clockText.text = DateTime.Now.ToString();
 
 
     }
@@ -40,16 +39,8 @@ public class UIDisplayEarthStats : MonoBehaviour
         if (earthObject != null)
         {
             tmp_text.text = earthObject.GetComponent<EarthStats>().GetNutrientLevels();
-         /*   waterInTile = earthObject.GetComponent<EarthStats>().waterInTile;
-            phosphorusInTile = earthObject.GetComponent<EarthStats>().phosphorusInTile;
-            nitrogenInTile = earthObject.GetComponent<EarthStats>().nitrogenInTile;
-            calciumInTile = earthObject.GetComponent<EarthStats>().calciumInTile;
-            potassiumInTile = earthObject.GetComponent<EarthStats>().potassiumInTile;*/
         }
 
-       /* tmp_text.text = "\n" + waterInTile.ToString() + "\n" + phosphorusInTile.ToString() + "\n" +
-            nitrogenInTile.ToString() + "\n" + calciumInTile.ToString() + "\n" +
-            potassiumInTile.ToString();*/
-        
+  
     }
 }
