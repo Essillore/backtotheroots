@@ -150,7 +150,7 @@ public class Mycelium : MonoBehaviour
         while(true)
         {
             yield return new WaitForSeconds(howOften);
-            ExchangeNutrients();
+            ExchangeNutrients(gridManager.GetRootPiece(gridPosition));
         }
     }
 }
