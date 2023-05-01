@@ -12,6 +12,8 @@ public class MotherTree : MonoBehaviour
     public float calciumInTree = 5f;
     public float potassiumInTree = 3f;
 
+    public UIMotherTree SliderforWater;
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,4 +26,14 @@ public class MotherTree : MonoBehaviour
     {
         
     }
+
+    public IEnumerator UpdateUI()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(1f);
+            SliderforWater.SetWater((int)waterInTree);
+        }
+    }
+
 }

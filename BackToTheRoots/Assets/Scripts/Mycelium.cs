@@ -41,7 +41,6 @@ public class Mycelium : MonoBehaviour
     {
 
         List<GameObject> adjacentTiles = gridManager.GetAdjacentObjects(gridPosition);
-        List<Vector2Int> emptyTiles = new List<Vector2Int>();
         foreach (GameObject tile in adjacentTiles)
         {   
             // we need to know if the tile already has a mycelium on it,
