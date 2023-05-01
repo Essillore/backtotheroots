@@ -169,8 +169,19 @@ public class MouseMovement : MonoBehaviour
         // Handle the grid tile click (you can replace this with your own logic)
         Debug.Log($"Clicked tile at grid coordinates: ({tileCoordinates.x}, {tileCoordinates.y})");
 
+        Vector2Int whichEarthSquare = Vector2Int.RoundToInt(worldMousePosition);
+        Vector3 earthSquarePlace = new Vector3(whichEarthSquare.x, whichEarthSquare.y, 0f);
+
+        //  foreach (var item in gridM.gridObjects)
+        GameObject rootParentEarthtile = gridManager.GetEarthObject(whichEarthSquare);
+        Instantiate(rootSquare, earthSquarePlace, Quaternion.identity, rootParentEarthtile.transform);
+
         // Create a tile at the clicked grid coordinates
-        //treeRoots.SetTile(tileCoordinates, rootTilePrefab);
+        // treeRoots.SetTile(tilesPassed, rootTilePrefab);
+
+
+        // Create a tile at the clicked grid coordinates
+        treeRoots.SetTile(tileCoordinates, rootTilePrefab);
 
         if (Input.GetButton("PlaceRoot"))
         {   
@@ -186,6 +197,8 @@ public class MouseMovement : MonoBehaviour
 
             if (Input.GetButtonUp("PlaceRoot"))
             {
+            
+
                 foreach (Vector3Int location in tilesPassed)
                 {
                     treeRoots.SetTile(location, rootTilePrefab);
@@ -193,38 +206,20 @@ public class MouseMovement : MonoBehaviour
                 }
                 {
 
-
-
-
-
-
-
-           /*         // whichEarthSquare = new Vector2Int(0, 0);
-                    tempVectore = worldMousePosition.RoundToInt(worldMousePosition);
-
-                    Vector2Int hiua = worldMousePosition.Vector2Int;
-        //                    whichEarthSquare = worldMousePosition;
-                    Vector3Int.Vector2Int
-                    //  foreach (var item in gridM.gridObjects)
-
-                    
-
-            GameObject rootParentEarthtile = gridManager.GetEarthObject(whichEarthSquare);
-            Instantiate(rootSquare, new Vector3(item.Key.position.x, position.y, 0), Quaternion.identity, parent.transform);
-*/
-        }
-        
-
                 
-                
+    
+                }
+
+
+
+
 
                 /*rootPlacementLenght = tileCoordinates - treeRoots.WorldToCell(worldMousePosition);
                 i = rootPlacementLenght.magnitude;
 
                 tilesPassed 
 
-                // Create a tile at the clicked grid coordinates
-                treeRoots.SetTile(tilesPassed, rootTilePrefab);
+
                 */
 
             }

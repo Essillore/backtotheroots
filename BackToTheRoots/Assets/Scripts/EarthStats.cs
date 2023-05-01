@@ -13,6 +13,7 @@ public class EarthStats : MonoBehaviour
     public Vector2Int gridPosition;
         private Vector2Int tempVector2;
 
+    public RootPiece rootPiece;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +51,12 @@ public class EarthStats : MonoBehaviour
     {
         
     }
+    public void RootHasBeenAttached()
+    {
+       rootPiece = GetComponentInChildren<RootPiece>();
+        Debug.Log("Root Has been Attached");
+    }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
