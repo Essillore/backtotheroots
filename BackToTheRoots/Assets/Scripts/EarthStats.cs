@@ -71,7 +71,7 @@ public class EarthStats : MonoBehaviour
 
     public string GetNutrientLevels()
     {
-        return " Water: " + (int)waterInTile + "\n" + " Phosphorus: " + (int)phosphorusInTile +"\n" +  " Nitrogen: " + (int)nitrogenInTile + "\n" + 
+        return " Water: " + (int)waterInTile + "\n" + " Phosphorus: " + (int)phosphorusInTile + "\n" +  " Nitrogen: " + (int)nitrogenInTile + "\n" + 
         " Calcium: " + (int)calciumInTile + "\n" + " Potassium: " + (int)potassiumInTile;
     }
 

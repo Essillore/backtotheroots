@@ -38,6 +38,7 @@ public class MouseMovement : MonoBehaviour
     public float i;
     public Vector2Int gridPosition;
     private Vector2Int oldPosition;
+    public MotherTree motherTree;
     
     // Start is called before the first frame update
     void Start()
@@ -166,15 +167,19 @@ public class MouseMovement : MonoBehaviour
         if (Input.GetButton("PlaceRoot"))
         {
                 if (CanPlaceRoot())
-            {
+                {
+                    if (motherTree.sugarInTree >= 20f)
+                {
+
                 AddRoot(gridPosition);
-            }
-
-            
-
-           
+                    motherTree.sugarInTree -= 20f;
+                }
+            }    
         }
     }
+
+
+
     private bool CanPlaceRoot()
     {
                 bool hasRoot = false;

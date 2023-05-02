@@ -12,6 +12,7 @@ public class RootPiece : MonoBehaviour
     public MotherTree motherTreeScript;
 
     public float waterInRootpiece = 0f;
+    public float sugarInRootpiece = 0f;
     public float phosphorusInRootpiece = 0f;
     public float nitrogenInRootpiece = 0f;
     public float calciumInRootpiece = 0f;
@@ -20,6 +21,9 @@ public class RootPiece : MonoBehaviour
     public Vector2 vectorToMotherTree;
     public Vector2Int vToMotherTree;
     public float distanceToMotherTree = 1f;
+
+    public bool myceliumConnected = false;
+    private float sugarAbsorbionRatio = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -68,20 +72,32 @@ public class RootPiece : MonoBehaviour
 
     public IEnumerator AbsorbRatio(float howOften)
     {
-        int upto = 120;
+        int upto = 500;
         if (earthstats.phosphorusInTile > 1)
         {
             for (int i = 0; i <= upto; i += 1)
             {
                 yield return new WaitForSeconds(howOften);
                 RootAbsorbsNutrients();
+                GetSugarFromMotherTree(myceliumConnected);
             }
         } else
         {
             yield break;
+        }     
+    }
+
+    public void GetSugarFromMotherTree(bool myceliumConnected)
+    {
+        if (myceliumConnected == true)
+        {
+            motherTreeScript.sugarInTree -= sugarAbsorbionRatio;
+            sugarInRootpiece += sugarAbsorbionRatio;
         }
-       
-        
+        else if (myceliumConnected == false)
+        {
+
+        }
     }
 
     public void SendNutrientsToMotherTree(float amount)
@@ -111,6 +127,7 @@ public class RootPiece : MonoBehaviour
             potassiumInRootpiece -= amount;
             motherTreeScript.potassiumInTree += amount;
         }
+        
 }
 
     public void RootAbsorbsNutrients()

@@ -109,13 +109,14 @@ public class GridManager : MonoBehaviour
     }
     
 
-    // a method that returns rootpiec from a tile
+    // a method that returns rootpiece from a tile
     public RootPiece GetRootPiece(Vector2Int position)
     {
         if (gridObjects.TryGetValue(position, out GameObject earthObject))
         {
             if (earthObject.GetComponentInChildren<RootPiece>() != null)
             {
+                //earthObject.GetComponentInChildren<RootPiece>().myceliumConnected = true;
                 return earthObject.GetComponentInChildren<RootPiece>();
             }
             else

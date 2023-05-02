@@ -142,9 +142,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 37
-        y: 577
+        y: 567
         width: 33
-        height: 12
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,6 +154,69 @@ TextureImporter:
       bones: []
       spriteID: 8216c19614a7bcd49b95beb3a0012003
       internalID: 809128982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Treeroots_2
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 568
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59124b9ec2e445845a0eb8242aa25cc4
+      internalID: -1492121682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Treeroots_3
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 531
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6748fa1e7a25faf41abbdb7b1528be52
+      internalID: 1993801989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Treeroots_4
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 531
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.47332764}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc1393dc96c7587478052cccd9b215dd
+      internalID: 188158652
       vertices: []
       indices: 
       edges: []
@@ -169,8 +232,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Treeroots_0: 277600491
-      Treeroots_1: 809128982
+      Treeroots_3: 1993801989
+      Treeroots_4: 188158652
+      Treeroots_2: 277600491
+      Treeroots_0: 809128982
+      Treeroots_1: -1492121682
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 1

@@ -41,7 +41,7 @@ public class MotherTree : MonoBehaviour
         potassiumUIslider = sliderforPotassium.GetComponent<UIMotherTree>();
 
         StartCoroutine(UpdateUI());
-
+        StartCoroutine(WhenToPhotoSynthetize());
 
     }
 
@@ -51,6 +51,46 @@ public class MotherTree : MonoBehaviour
         
     }
 
+    public float photoSynthesisRatio;
+
+    public IEnumerator WhenToPhotoSynthetize()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(5f);
+            PhotoSynthesis();
+        }
+    }
+
+       private void  PhotoSynthesis()
+        {
+        sugarInTree += 20f * photoSynthesisRatio;
+        if (waterInTree > 20f)
+        {
+            photoSynthesisRatio += 1f;
+        }
+
+        if (phosphorusInTree > 7f)
+        {
+            photoSynthesisRatio += 1f;
+        }
+        if (nitrogenInTree > 30f)
+        {
+            photoSynthesisRatio += 1f;
+        }
+
+        if (calciumInTree > 10f)
+        {
+            photoSynthesisRatio += 1f;
+        }
+
+        if (potassiumInTree>3f)
+        {
+            photoSynthesisRatio += 1f;
+        }
+
+        }
+   
     public IEnumerator UpdateUI()
     {
         for (int i = 0; i < 500; i++)

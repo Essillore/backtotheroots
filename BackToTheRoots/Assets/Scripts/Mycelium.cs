@@ -11,11 +11,14 @@ public class Mycelium : MonoBehaviour
     public EarthStats earthStats;
 
     public float waterInMycelium;
-    public float nitrogenInMycelium;
+    public float sugarInMycelium = 2f;
     public float phosphorusInMycelium;
-    public float potassiumInMycelium;
+    public float nitrogenInMycelium;
+    public float potassiumInMycelium = 2f;
     public float calciumInMycelium;
 
+
+    private float sugarAbsorbionRation = 0.5f;
     private bool connectedToRoots = false;
     private bool exchangeRunning = false;
 
@@ -82,12 +85,13 @@ public class Mycelium : MonoBehaviour
                 Debug.Log($"Found empty tile at {gridPosition}");
                 if (Random.Range(0f, 1f) < 0.3f)
                 {
-                    
+                    sugarInMycelium -= 1f;
                            
                     Vector3 earthSquarePlace = new Vector3(gridPosition.x, gridPosition.y, 0f);
         
                     GameObject rootParentEarthtile = gridManager.GetEarthObject(gridPosition);
                     Instantiate(myceliumPrefab, earthSquarePlace, Quaternion.identity, rootParentEarthtile.transform);
+                    
                     
                 }
             }   
@@ -141,7 +145,14 @@ public class Mycelium : MonoBehaviour
 
         rootPiece.GetComponent<RootPiece>().calciumInRootpiece += calciumInMycelium * exchangeRatio;
         calciumInMycelium -= calciumInMycelium * exchangeRatio;
+
+        if (rootPiece.GetComponent<RootPiece>().sugarInRootpiece >= sugarAbsorbionRation)
+        {
+            rootPiece.GetComponent<RootPiece>().sugarInRootpiece -= sugarAbsorbionRation;
+            sugarInMycelium += sugarAbsorbionRation;
+        };
         
+
         // todo: add exchange of sugars
     }
 

@@ -22,7 +22,7 @@ public class EarthSpawner : MonoBehaviour
 
             Instantiate(earthSquare, location, Quaternion.identity, motherTree.transform);
 
-            for (j = -6; j < 7; j++)
+            for (j = -6; j <= 5; j++)
             {
                 location = new Vector3(i, j, 0);
 
